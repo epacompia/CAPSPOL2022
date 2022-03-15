@@ -1,0 +1,19 @@
+﻿@model Position
+
+@{
+    ViewData["Title"] = "Cargo";
+}
+
+<h1>Crear Cargo</h1>
+<form asp-controller="Positions" asp-action="Create">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Nombre</label>
+        <input type="text" id="Name" name="Name" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">Descripcíón</label>
+        <textarea name="Description" cols="3" rows="3" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
