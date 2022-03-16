@@ -1,7 +1,12 @@
+using static CAPSPOL2022.Servicios.RepositoryPositions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//CONFIGURANDO SERVICIO DE POSITION
+builder.Services.AddTransient<IRepositoryPositionsService, RepositoryPositionsService>();
 
 var app = builder.Build();
 
