@@ -15,7 +15,12 @@ namespace CAPSPOL2022.Controllers
             this.repositoryPositionsService = repositoryPositionsService;
         }
 
-
+        //METODO PARA LISTAR POSICIONES INDEX
+        public async Task<IActionResult> Index()
+        {
+            var listPosition =await repositoryPositionsService.ListPosition(1);
+            return View(listPosition);
+        }
 
         public IActionResult Create()
         {
@@ -40,7 +45,7 @@ namespace CAPSPOL2022.Controllers
             }
 
             await repositoryPositionsService.Create(position);
-            return View();
+            return RedirectToAction("Index");
         }
 
 

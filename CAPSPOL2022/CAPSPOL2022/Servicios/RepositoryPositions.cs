@@ -10,6 +10,7 @@ namespace CAPSPOL2022.Servicios
         {
             Task Create(Position position);
             Task<bool> Exist(string name);
+            Task<IEnumerable<Position>> ListPosition(int flag);
         }
 
         public class RepositoryPositionsService : IRepositoryPositionsService
