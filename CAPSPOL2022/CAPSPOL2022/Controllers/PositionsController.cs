@@ -49,6 +49,16 @@ namespace CAPSPOL2022.Controllers
         }
 
 
+        //CREANDO EL METODO EDITAR REGISTRO 
+        public async Task<IActionResult> Edit(int id)
+        {
+            var position=await repositoryPositionsService.GetForId(id);
+            if (position is null)
+            {
+                return RedirectToAction("No se encontro el registro","Home");
+            }
+            return View(position);
+        }
 
 
     }

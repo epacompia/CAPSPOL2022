@@ -10,7 +10,9 @@ namespace CAPSPOL2022.Servicios
         {
             Task Create(Position position);
             Task<bool> Exist(string name);
+            Task<Position> GetForId(int id);
             Task<IEnumerable<Position>> ListPosition(int flag);
+            Task Update(Position position);
         }
 
         public class RepositoryPositionsService : IRepositoryPositionsService
@@ -53,7 +55,25 @@ namespace CAPSPOL2022.Servicios
                 return await connection.QueryAsync<Position>(@"select id,name,description from POSITION where flag=@flag",new {flag});
 
             }
-        }
+
+            //4. METODO PARA ACTUALIZAR UN POSITION PARTE 1
+            public async Task Update(Position position)
+            {
+                using var connection = new SqlConnection(connectionString);
+                await connection.ExecuteAsync(@"update POSITION
+                                                        set name=@name , description=@description 
+                                                        where id=@id", new { position });
+            }
+
+            //4. METODO PARA ACTUALIZAR UN POSITION PARTE (CON ESTE METODO OBTENGO EL REGISTRO POR SU ID) 2
+            public async Task<Position> GetForId(int id)
+            {
+                using var connection= new SqlConnection(connectionString);
+                return await connection.QueryFirstOrDefaultAsync<Position>(@"SELECT id,name,description FROM POSITION
+                                                                           where id=@id", new { id });
+            }
+
+
 
 
     }
