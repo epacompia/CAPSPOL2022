@@ -60,6 +60,42 @@ namespace CAPSPOL2022.Controllers
             return View(position);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Edit(Position position)
+        {
+            var positionsExist = await repositoryPositionsService.GetForId(position.Id);
+            if (positionsExist is null)
+            {
+                return RedirectToAction("NoEncontrado","Home");
+            }
+            await repositoryPositionsService.Update(position);
+            return RedirectToAction("Index");
+        }
+
+
+       //METODO PARA ELIMINAR REGISTRO DE POSITION
+       public async Task<IActionResult> Delete(int id)
+        {
+            var position = await repositoryPositionsService.GetForId(id);
+            if (position is null)
+            {
+                return RedirectToAction("NoEncontrado","Home");
+            }
+            return View(position);
+        }
+
+
+        [HttpPost]
+       public async Task<IActionResult> DeletePosition(int id)
+        {
+            var position = await repositoryPositionsService.GetForId(id);
+            if (position is null)
+            {
+                return RedirectToAction("NoEncontrado","Home");
+            }
+            await repositoryPositionsService.Delete(id);
+            return RedirectToAction("Index");
+        } 
 
     }
 }

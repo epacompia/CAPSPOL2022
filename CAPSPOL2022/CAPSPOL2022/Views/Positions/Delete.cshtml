@@ -1,0 +1,13 @@
+﻿@model Position
+
+@{
+    ViewData["Title"] = "Eliminar Registro";
+}
+
+<h3 class="mb-3">Esta seguro que desea eliminar este registro?</h3>
+
+<form asp-action="DeletePosition" asp-controller="Positions">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Borrar</button>
+    <a asp-action="Index" asp-controller="Positions" class="btn btn-secondary">Cancelar</a>
+</form>

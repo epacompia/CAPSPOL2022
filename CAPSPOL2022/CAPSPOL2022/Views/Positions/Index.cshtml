@@ -24,8 +24,8 @@
             <td>@item.Name</td>
             <td>@item.Description</td>
             <td>
-                <a class="btn btn-primary">Editar</a>
-                <a class="btn btn-danger">Eliminar</a>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id" >Eliminar</a>
             </td>
         </tr>
     }

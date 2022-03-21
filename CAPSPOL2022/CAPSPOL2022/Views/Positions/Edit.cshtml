@@ -1,1 +1,27 @@
 ﻿@model Position
+
+@{
+    ViewData["Title"]="Editar Cargo";
+
+}
+
+<h1> Editar Cargo: @Model.Name</h1>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form asp-controller="Positions" asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input type="text" asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <input type="text" asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+    <a class="btn btn-danger" asp-action="Index" asp-controller="Positions">Cancelar</a>
+</form>
